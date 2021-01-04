@@ -14,7 +14,7 @@ let obj = {
 
 function minus(obj, val) {
     let prop1 = obj.prop1;
-    prop1 = prop1 - val;
+    obj.prop1 = prop1 - val;
 }
 
 minus(obj, 1);
@@ -31,8 +31,8 @@ console.log(obj.prop1);
 
 
 function double(obj) {
-    let { prop1 } = obj;
-    prop1 = prop1 * 2;
+    // let { prop1 } = obj;
+    obj.prop1 = obj.prop1 * 2;
 }
 
 double(obj);
@@ -46,27 +46,32 @@ console.log(obj.prop1);
  * されるか、そして*なぜそのようになるのか*を
  * 考えてみてください。
  */
+// console.log(obj); => { prop1: 18 }
 obj.prop2 = {
     prop3: 1
 }
-
+// console.log(obj); => { prop1: 18, prop2: { prop3: 1 } }
 function fn({ prop2 }) {
     let prop = prop2;
+    // console.log(prop); => { prop3: 1 }
     prop.prop3 = 2;
+    // console.log(prop); => { prop3: 2 }
     prop = { prop3: 3 };
+    // console.log(prop); => { prop3: 3 }
     return { prop2: prop };
 }
 obj = fn(obj);
-// console.log(obj.prop2.prop3);
+console.log(obj.prop2.prop3);
 
 /**
  * 問題４：
  * through関数を経由して格納されるobj2は
  * objと等価でしょうか？
  */
+// console.log(obj); => { prop2: { prop3: 3 } }
 function through (obj) {
     return obj;
 }
 
 const obj2 = through(obj);
-// console.log(obj === obj2);
+console.log(obj === obj2);
