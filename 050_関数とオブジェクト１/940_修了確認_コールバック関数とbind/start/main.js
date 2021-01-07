@@ -29,8 +29,10 @@ function calcFactory(val, callback) {
     };
 }
 
+
 const calc = calcFactory(10, console.log);
-calc.plus(5); 
-calc.minus(3); 
-calc.multiply(3);
-calc.divide(2);
+setTimeout(calc.plus(5), 1000);
+// calc.plus(5); 
+// calc.minus(3); 
+// calc.multiply(3);
+// calc.divide(2);
