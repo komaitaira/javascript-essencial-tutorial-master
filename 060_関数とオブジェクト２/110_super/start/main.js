@@ -1,3 +1,6 @@
+// 【super】
+// 継承元の関数を呼び出すためのキーワード
+
 class Person {
     constructor(name, age) {
         this.name = name;
